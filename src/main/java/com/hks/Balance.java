@@ -1,5 +1,7 @@
 package com.hks;
 
+import java.util.Objects;
+
 public class Balance {
 
     private final Amount amount;
@@ -22,6 +24,19 @@ public class Balance {
 
     public Long getValue() {
         return this.amount.getValue();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Balance balance = (Balance) o;
+        return Objects.equals(amount, balance.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount);
     }
 
 
