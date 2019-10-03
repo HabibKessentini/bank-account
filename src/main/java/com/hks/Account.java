@@ -4,8 +4,12 @@ public class Account {
 
     private Long balance;
 
-    public Account() {
+    private Account() {
         this.balance = 0L;
+    }
+
+    public static Account create() {
+        return new Account();
     }
 
     public void deposit(Long amount) {
