@@ -16,6 +16,10 @@ public class Account {
         balance += amount;
     }
 
+    public void withdraw(Long amount) {
+        balance -= amount;
+    }
+
     public Long getBalance() {
         return balance;
     }

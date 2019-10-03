@@ -15,4 +15,14 @@ public class AccountTest {
         assertThat(account.getBalance()).isEqualTo(30L);
     }
 
+    @Test
+    public void should_decrease_account_balance_when_withdraw() {
+        Account account = Account.create();
+        account.deposit(50L);
+
+        account.withdraw(20L);
+
+        assertThat(account.getBalance()).isEqualTo(30L);
+    }
+
 }
