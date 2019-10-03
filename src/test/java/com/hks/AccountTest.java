@@ -26,7 +26,7 @@ public class AccountTest {
     }
 
     @Test
-    public void should_decrease_account_balance_when_withdraw() {
+    public void should_decrease_account_balance_when_make_withdraw() {
         Account account = Account.create();
         account.deposit(50L);
 

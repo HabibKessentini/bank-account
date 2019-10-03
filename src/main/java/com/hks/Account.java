@@ -1,11 +1,12 @@
 package com.hks;
 
+
 public class Account {
 
-    private Long balance;
+    private Balance balance;
 
     private Account() {
-        this.balance = 0L;
+        this.balance = Balance.of(0L);
     }
 
     public static Account create() {
@@ -13,21 +14,15 @@ public class Account {
     }
 
     public void deposit(Long amount) {
-        if (amount < 0) {
-            throw new NegativeAmountException();
-        }
-        balance += amount;
+        balance.deposit(amount);
     }
 
     public void withdraw(Long amount) {
-        if (amount < 0) {
-            throw new NegativeAmountException();
-        }
-        balance -= amount;
+        balance.withdraw(amount);
     }
 
     public Long getBalance() {
-        return balance;
+        return balance.getValue();
     }
 
 
