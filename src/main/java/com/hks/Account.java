@@ -7,11 +7,11 @@ import java.util.List;
 public class Account {
 
     private StatementStore statementsStore;
-    private Console console;
+    private StatementPrinter statementPrinter;
 
     private Account(Console console) {
         this.statementsStore = StatementStore.create();
-        this.console = console;
+        this.statementPrinter = StatementPrinter.create(console);
     }
 
     public static Account create(Console console) {
@@ -35,15 +35,6 @@ public class Account {
     }
 
     public void printStatements() {
-        console.printLine("| operation | date | amount | balance |");
-        getStatements().forEach(this::printLine);
-    }
-
-    private void printLine(Statement statement) {
-        String line = "| " + statement.getOperationType() +
-                " | " + statement.getDate() +
-                " | " + statement.getAmount().getValue() +
-                " | " + statement.getInitialBalance().getValue() + " |";
-        console.printLine(line);
+        statementPrinter.print(getStatements());
     }
 }
