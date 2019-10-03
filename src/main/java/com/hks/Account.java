@@ -13,6 +13,9 @@ public class Account {
     }
 
     public void deposit(Long amount) {
+        if (amount < 0) {
+            throw new NegativeAmountException();
+        }
         balance += amount;
     }
 
