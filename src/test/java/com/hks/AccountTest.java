@@ -1,5 +1,6 @@
 package com.hks;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.List;
@@ -57,11 +58,11 @@ public class AccountTest {
 
         List<Statement> statements = account.getStatements();
 
-        assertThat(statements).containsExactly(
-                new Statement(Amount.of(50L), "2019-09-09", Balance.of(0L), "deposit"),
-                new Statement(Amount.of(30L), "2019-09-10", Balance.of(50L), "withdraw"),
-                new Statement(Amount.of(20L), "2019-09-11", Balance.of(20L), "deposit"),
-                new Statement(Amount.of(40L), "2019-09-12", Balance.of(40L), "deposit")
+        Assertions.assertThat(statements).containsExactly(
+                Statement.createDeposit(Amount.of(50L), "2019-09-09", Balance.of(0L)),
+                Statement.createWithdrawal(Amount.of(30L), "2019-09-10", Balance.of(50L)),
+                Statement.createDeposit(Amount.of(20L), "2019-09-11", Balance.of(20L)),
+                Statement.createDeposit(Amount.of(40L), "2019-09-12", Balance.of(40L))
         );
     }
 

@@ -1,8 +1,9 @@
 package com.hks;
 
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
 
-public class Balance {
+@EqualsAndHashCode
+class Balance {
 
     private final Amount amount;
 
@@ -10,33 +11,24 @@ public class Balance {
         this.amount = Amount.of(amount);
     }
 
-    public static Balance of(Long amount) {
+    private Balance(Amount amount) {
+        this.amount = amount;
+    }
+
+    static Balance of(Long amount) {
         return new Balance(amount);
     }
 
-    public void deposit(Long amount) {
-        this.amount.add(Amount.of(amount));
+    Balance deposit(Amount amount) {
+        return new Balance(this.amount.add(amount));
     }
 
-    public void withdraw(Long amount) {
-        this.amount.subtract(Amount.of(amount));
+    Balance withdraw(Amount amount) {
+        return new Balance(this.amount.subtract(amount));
     }
 
-    public Long getValue() {
+    Long getValue() {
         return this.amount.getValue();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Balance balance = (Balance) o;
-        return Objects.equals(amount, balance.amount);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(amount);
     }
 
 

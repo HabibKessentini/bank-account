@@ -1,7 +1,8 @@
 package com.hks;
 
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 class Amount {
 
     private Long value;
@@ -13,33 +14,20 @@ class Amount {
         this.value = value;
     }
 
-    public static Amount of(Long value) {
+    static Amount of(Long value) {
         return new Amount(value);
     }
 
-    public void add(Amount amount) {
-        this.value += amount.value;
+    Amount add(Amount amount) {
+        return new Amount(this.value + amount.value);
     }
 
-    public void subtract(Amount amount) {
-        this.value -= amount.value;
+    Amount subtract(Amount amount) {
+        return new Amount(this.value - amount.value);
     }
 
-    public Long getValue() {
+    Long getValue() {
         return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Amount amount = (Amount) o;
-        return Objects.equals(value, amount.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
     }
 
 

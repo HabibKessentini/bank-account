@@ -1,17 +1,13 @@
 package com.hks;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
 
-    private Balance balance;
-    private List<Statement> statements;
+    private StatementStore statementsStore;
 
     private Account() {
-        this.balance = Balance.of(0L);
-        this.statements = new ArrayList<>();
+        this.statementsStore = StatementStore.create();
     }
 
     public static Account create() {
@@ -19,23 +15,20 @@ public class Account {
     }
 
     public void deposit(Long amount, String date) {
-        Statement statement = new Statement(Amount.of(amount), date, Balance.of(balance.getValue()), "deposit");
-        statements.add(statement);
-        balance.deposit(amount);
+        statementsStore.deposit(Amount.of(amount), date);
     }
 
     public void withdraw(Long amount, String date) {
-        Statement statement = new Statement(Amount.of(amount), date, Balance.of(balance.getValue()), "withdraw");
-        statements.add(statement);
-        balance.withdraw(amount);
+        statementsStore.withdraw(Amount.of(amount), date);
     }
 
     public Long getBalance() {
-        return balance.getValue();
+        return statementsStore.getBalance().getValue();
     }
 
     public List<Statement> getStatements() {
-        return statements;
+        return statementsStore.getAll();
     }
+
 
 }
