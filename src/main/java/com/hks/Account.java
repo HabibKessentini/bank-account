@@ -20,6 +20,9 @@ public class Account {
     }
 
     public void withdraw(Long amount) {
+        if (amount < 0) {
+            throw new NegativeAmountException();
+        }
         balance -= amount;
     }
 

@@ -35,4 +35,15 @@ public class AccountTest {
         assertThat(account.getBalance()).isEqualTo(30L);
     }
 
+    @Test
+    public void should_throw_exception_when_make_withdraw_with_negative_amount() {
+        Account account = Account.create();
+        account.deposit(50L);
+
+        assertThatThrownBy(() -> account.withdraw(-30L))
+                .isInstanceOf(NegativeAmountException.class)
+                .hasMessage("Business Error: Negative amounts are not allowed.");
+    }
+
+
 }
