@@ -1,11 +1,13 @@
 package com.hks;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import static com.hks.OperationType.DEPOSIT;
 import static com.hks.OperationType.WITHDRAWAL;
 
 @EqualsAndHashCode
+@Getter
 public class Statement {
 
     private final Amount amount;

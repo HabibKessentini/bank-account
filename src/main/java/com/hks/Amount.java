@@ -1,8 +1,10 @@
 package com.hks;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @EqualsAndHashCode
+@Getter
 class Amount {
 
     private Long value;
@@ -25,10 +27,5 @@ class Amount {
     Amount subtract(Amount amount) {
         return new Amount(this.value - amount.value);
     }
-
-    Long getValue() {
-        return value;
-    }
-
 
 }
