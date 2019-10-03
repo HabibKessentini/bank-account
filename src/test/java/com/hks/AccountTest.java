@@ -30,7 +30,6 @@ public class AccountTest {
 
     @Test
     public void should_increase_balance_when_make_deposit() {
-
         account.deposit(30L, "2019-09-10");
 
         assertThat(account.getBalance()).isEqualTo(30L);
@@ -38,7 +37,6 @@ public class AccountTest {
 
     @Test
     public void should_throw_exception_when_make_deposit_with_negative_amount() {
-
         assertThatThrownBy(() -> account.deposit(-30L, "2019-09-10"))
                 .isInstanceOf(NegativeAmountException.class)
                 .hasMessage("Business Error: Negative amounts are not allowed.");
@@ -86,7 +84,7 @@ public class AccountTest {
         account.deposit(20L, "2019-09-11");
         account.deposit(60L, "2019-09-12");
 
-        account.printStatements();
+        account.printStatement();
 
         InOrder inOrder = Mockito.inOrder(console);
         inOrder.verify(console).printLine("| operation | date | amount | balance |");

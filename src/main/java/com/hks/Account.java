@@ -34,7 +34,7 @@ public class Account {
         return statementsStore.getAll();
     }
 
-    public void printStatements() {
+    public void printStatement() {
         statementPrinter.print(getStatements());
     }
 }

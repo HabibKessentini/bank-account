@@ -14,11 +14,11 @@ public class StatementPrinter {
         this.console = console;
     }
 
-    public static StatementPrinter create(Console console) {
+    static StatementPrinter create(Console console) {
         return new StatementPrinter(console);
     }
 
-    public void print(List<Statement> statements) {
+    void print(List<Statement> statements) {
         console.printLine(HEADER);
         statements.forEach(this::printLine);
     }
