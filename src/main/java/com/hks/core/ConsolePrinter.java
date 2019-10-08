@@ -1,6 +1,6 @@
 package com.hks.core;
 
-public class Console {
+public class ConsolePrinter {
 
     public void printLine(String line) {
         System.out.println(line);

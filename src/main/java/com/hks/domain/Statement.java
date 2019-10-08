@@ -1,10 +1,10 @@
-package com.hks;
+package com.hks.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import static com.hks.OperationType.DEPOSIT;
-import static com.hks.OperationType.WITHDRAWAL;
+import static com.hks.domain.OperationType.DEPOSIT;
+import static com.hks.domain.OperationType.WITHDRAWAL;
 
 @EqualsAndHashCode
 @Getter

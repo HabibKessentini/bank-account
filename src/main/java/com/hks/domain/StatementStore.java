@@ -1,11 +1,11 @@
-package com.hks;
+package com.hks.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class StatementStore {
+class StatementStore {
 
     private List<Statement> statements;
 
@@ -39,7 +39,7 @@ public class StatementStore {
         return Optional.of(statement);
     }
 
-    public List<Statement> getAll() {
+    List<Statement> getAll() {
         return Collections.unmodifiableList(statements);
     }
 }

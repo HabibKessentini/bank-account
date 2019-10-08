@@ -1,19 +1,19 @@
-package com.hks;
+package com.hks.domain;
 
-import com.hks.core.Console;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.util.Lists.newArrayList;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AccountTest {
@@ -21,11 +21,11 @@ public class AccountTest {
     private Account account;
 
     @Mock
-    private Console console;
+    private StatementPrinter statementPrinter;
 
     @Before
     public void setUp() {
-        account = Account.create(console);
+        account = Account.create(statementPrinter);
     }
 
     @Test
@@ -86,12 +86,14 @@ public class AccountTest {
 
         account.printStatement();
 
-        InOrder inOrder = Mockito.inOrder(console);
-        inOrder.verify(console).printLine("| operation | date | amount | balance |");
-        inOrder.verify(console).printLine("| DEPOSIT | 2019-09-09 | 50 | 0 |");
-        inOrder.verify(console).printLine("| WITHDRAWAL | 2019-09-10 | 30 | 50 |");
-        inOrder.verify(console).printLine("| DEPOSIT | 2019-09-11 | 20 | 20 |");
-        inOrder.verify(console).printLine("| DEPOSIT | 2019-09-12 | 60 | 40 |");
+        List<Statement> statements = newArrayList(
+                Statement.createDeposit(Amount.of(50L), "2019-09-09", Balance.of(0L)),
+                Statement.createWithdrawal(Amount.of(30L), "2019-09-10", Balance.of(50L)),
+                Statement.createDeposit(Amount.of(20L), "2019-09-11", Balance.of(20L)),
+                Statement.createDeposit(Amount.of(60L), "2019-09-12", Balance.of(40L))
+        );
+        verify(statementPrinter, times(1)).print(statements);
+
     }
 
 

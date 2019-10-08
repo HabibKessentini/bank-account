@@ -1,6 +1,4 @@
-package com.hks;
-
-import com.hks.core.Console;
+package com.hks.domain;
 
 import java.util.List;
 
@@ -9,13 +7,13 @@ public class Account {
     private StatementStore statementsStore;
     private StatementPrinter statementPrinter;
 
-    private Account(Console console) {
+    private Account(StatementPrinter statementPrinter) {
         this.statementsStore = StatementStore.create();
-        this.statementPrinter = StatementPrinter.create(console);
+        this.statementPrinter = statementPrinter;
     }
 
-    public static Account create(Console console) {
-        return new Account(console);
+    public static Account create(StatementPrinter statementPrinter) {
+        return new Account(statementPrinter);
     }
 
     public void deposit(Long amount, String date) {

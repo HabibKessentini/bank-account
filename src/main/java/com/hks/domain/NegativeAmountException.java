@@ -1,4 +1,4 @@
-package com.hks;
+package com.hks.domain;
 
 public class NegativeAmountException extends RuntimeException {
 

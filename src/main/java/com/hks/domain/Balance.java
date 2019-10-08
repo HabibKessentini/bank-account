@@ -1,4 +1,4 @@
-package com.hks;
+package com.hks.domain;
 
 import lombok.EqualsAndHashCode;
 

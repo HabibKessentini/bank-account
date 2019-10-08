@@ -9,15 +9,15 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ConsoleTest {
+public class ConsolePrinterTest {
 
-    private Console console;
+    private ConsolePrinter console;
     private PrintStream sysOut;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setUp() {
-        console = new Console();
+        console = new ConsolePrinter();
         sysOut = System.out;
         System.setOut(new PrintStream(outContent));
     }
