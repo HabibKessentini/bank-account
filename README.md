@@ -7,7 +7,7 @@ Think of your personal bank account experience.
 When in doubt, go for the simplest solution.
 
 
-# Initial requirements
+## Initial requirements
 
 * Deposit and Withdrawal
 * Account statement (operation, date, amount, balance)
