@@ -11,6 +11,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.assertj.core.util.Lists.newArrayList;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StatementPrinterTest {
@@ -45,9 +47,7 @@ public class StatementPrinterTest {
 
         statementPrinter.print(newArrayList());
 
-        InOrder inOrder = Mockito.inOrder(console);
-        inOrder.verify(console).printLine("| operation | date | amount | balance |");
-        inOrder.verifyNoMoreInteractions();
+        verify(console, times(1)).printLine("| operation | date | amount | balance |");
     }
 
 }
